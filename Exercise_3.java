@@ -1,3 +1,6 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+
 class LinkedList 
 { 
     Node head; // head of linked list 
@@ -20,6 +23,28 @@ class LinkedList
     { 
         //Write your code here
 	//Implement using Fast and slow pointers
+	// Initialize fast and slow pointers to the head of the list
+	    Node fastPointer = head;
+	    Node slowPointer = head;
+	
+	    // Check if the list is not empty
+	    if (head != null) {
+	        // Traverse the list with two pointers
+	        // Fast pointer moves two steps at a time, hence we check up to .next.next for null in the while loop condition
+	        while (fastPointer != null && fastPointer.next != null && fastPointer.next.next != null) {
+	            fastPointer = fastPointer.next.next; // Move fast pointer two steps forward
+	            slowPointer = slowPointer.next; // Move slow pointer one step forward
+	        }
+	
+	        // At this point, slow pointer is pointing to the middle node
+	        System.out.println("The middle element is: " + slowPointer.data);
+	    }
+	    else {
+	        // If the list is empty, print appropriate message
+	        System.out.println("The list is empty.");
+	    }
+		
+	}
     } 
   
     public void push(int new_data) 
